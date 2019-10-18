@@ -5,7 +5,7 @@ pipeline {
             steps {
                 sh '''
                     echo "PATH=${PATH}"
-					echo "JAVA_HOME=/usr/bin"
+					echo "JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/bin"
 					echo "MAVEN_HOME=/usr/share/maven"
                     echo "M2_HOME=/usr/share/maven"
                 '''
