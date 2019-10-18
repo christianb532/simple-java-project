@@ -3,7 +3,9 @@ pipeline {
   stages {
     stage('Compile') {
       steps {
-        sh 'mvn clean install -DskipTests'
+        withMaven(maven: 'maven339', jdk: 'JDK8') {
+          sh 'mvn clean install -DskipTests'
+        }
       }
     }
   }
