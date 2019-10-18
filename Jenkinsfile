@@ -1,11 +1,21 @@
 pipeline {
   agent any
+  tools {
+        maven 'Maven 3.6.0'
+        jdk 'jdk8'
+    }
   stages {
-    stage('Compile') {
-      steps {
-        withMaven(maven: 'maven339', jdk: 'JDK8') {
-          sh 'mvn clean install -DskipTests'
+	stage ('Initialize') {
+            steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
+            }
         }
+    stage('Compile') {
+      steps {        
+          sh 'mvn clean install -DskipTests'
       }
     }
   }
