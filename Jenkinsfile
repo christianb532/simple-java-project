@@ -26,20 +26,20 @@ pipeline {
     stage('Cleaning workspace') {
       steps {
 			echo 'cleaning workspace...'
-			updateGitlabCommitStatus name: 'Jenkins build', state: 'running'	  
+			//updateGitlabCommitStatus name: 'Jenkins build', state: 'running'	  
 			sh 'mvn clean'
 			post{
 				success {
 						echo 'cleaning workspace... Success'
-						updateGitlabCommitStatus name: "Jenkins build", state: 'success'
+						//updateGitlabCommitStatus name: "Jenkins build", state: 'success'
 				}
                 failure {
 						echo 'cleaning workspace... Failure'
-						updateGitlabCommitStatus name: "Jenkins build", state: 'failed'
+						//updateGitlabCommitStatus name: "Jenkins build", state: 'failed'
 				}				
 				aborted {
 						echo 'cleaning workspace... Aborted'
-						updateGitlabCommitStatus name: "Jenkins build", state: 'canceled'
+						//updateGitlabCommitStatus name: "Jenkins build", state: 'canceled'
 				}
 
             }
@@ -48,20 +48,20 @@ pipeline {
 	stage('Compile') {
       steps {
 			echo 'Compiling project...'
-			updateGitlabCommitStatus name: 'Jenkins build', state: 'running'	  
+			//updateGitlabCommitStatus name: 'Jenkins build', state: 'running'	  
 			sh 'mvn compile'
 			post{
 				success {
 						echo 'Compiling project... Success'
-						updateGitlabCommitStatus name: "Jenkins build", state: 'success'
+						//updateGitlabCommitStatus name: "Jenkins build", state: 'success'
 				}
                 failure {
 						echo 'Compiling project... Failure'
-						updateGitlabCommitStatus name: "Jenkins build", state: 'failed'
+						//updateGitlabCommitStatus name: "Jenkins build", state: 'failed'
 				}				
 				aborted {
 						echo 'Compiling project... Aborted'
-						updateGitlabCommitStatus name: "Jenkins build", state: 'canceled'
+						//updateGitlabCommitStatus name: "Jenkins build", state: 'canceled'
 				}
 
             }
@@ -71,20 +71,20 @@ pipeline {
 	stage('Test') {
       steps {
 			echo 'Executing Unit tests...'
-			updateGitlabCommitStatus name: 'Jenkins build', state: 'running'
+			//updateGitlabCommitStatus name: 'Jenkins build', state: 'running'
 			sh 'mvn test'			
 			post{
 				success {
 						echo 'Executing Unit tests... Success'
-						updateGitlabCommitStatus name: "Jenkins build", state: 'success'
+						//updateGitlabCommitStatus name: "Jenkins build", state: 'success'
 				}
                 failure {
 						echo 'Executing Unit tests... Failure'
-						updateGitlabCommitStatus name: "Jenkins build", state: 'failed'
+						//updateGitlabCommitStatus name: "Jenkins build", state: 'failed'
 				}				
 				aborted {
 						echo 'Executing Unit tests... Aborted'
-						updateGitlabCommitStatus name: "Jenkins build", state: 'canceled'
+						//updateGitlabCommitStatus name: "Jenkins build", state: 'canceled'
 				}
 
             }
@@ -93,20 +93,20 @@ pipeline {
 	stage('Sonar Qube') {
       steps {
 			echo 'Executing SonarQube...'
-			updateGitlabCommitStatus name: 'Jenkins build', state: 'running'
+			//updateGitlabCommitStatus name: 'Jenkins build', state: 'running'
 			sh 'mvn sonar:sonar'			
 			post{
 				success {
 						echo 'Executing SonarQube...... Success'
-						updateGitlabCommitStatus name: "Jenkins build", state: 'success'
+						//updateGitlabCommitStatus name: "Jenkins build", state: 'success'
 				}
                 failure {
 						echo 'Executing SonarQube...... Failure'
-						updateGitlabCommitStatus name: "Jenkins build", state: 'failed'
+						//updateGitlabCommitStatus name: "Jenkins build", state: 'failed'
 				}				
 				aborted {
 						echo 'Executing SonarQube...... Aborted'
-						updateGitlabCommitStatus name: "Jenkins build", state: 'canceled'
+						//updateGitlabCommitStatus name: "Jenkins build", state: 'canceled'
 				}
 
             }
