@@ -19,10 +19,6 @@ pipeline {
 							echo 'clone from SCM... Aborted'
 							updateGitlabCommitStatus name: "Jenkins build", state: 'canceled'
 					}
-					unstable {
-							echo 'clone from SCM... Unstable'
-							updateGitlabCommitStatus name: "Jenkins build", state: 'failed'
-					}
 
 				}
             }
@@ -45,10 +41,6 @@ pipeline {
 						echo 'cleaning workspace... Aborted'
 						updateGitlabCommitStatus name: "Jenkins build", state: 'canceled'
 				}
-				unstable {
-						echo 'cleaning workspace... Unstable'
-						updateGitlabCommitStatus name: "Jenkins build", state: 'failed'
-				}
 
             }
       }
@@ -70,10 +62,6 @@ pipeline {
 				aborted {
 						echo 'Compiling project... Aborted'
 						updateGitlabCommitStatus name: "Jenkins build", state: 'canceled'
-				}
-				unstable {
-						echo 'Compiling project... Unstable'
-						updateGitlabCommitStatus name: "Jenkins build", state: 'failed'
 				}
 
             }
@@ -98,10 +86,6 @@ pipeline {
 						echo 'Executing Unit tests... Aborted'
 						updateGitlabCommitStatus name: "Jenkins build", state: 'canceled'
 				}
-				unstable {
-						echo 'Executing Unit tests... Unstable'
-						updateGitlabCommitStatus name: "Jenkins build", state: 'failed'
-				}
 
             }
       }
@@ -123,10 +107,6 @@ pipeline {
 				aborted {
 						echo 'Executing SonarQube...... Aborted'
 						updateGitlabCommitStatus name: "Jenkins build", state: 'canceled'
-				}
-				unstable {
-						echo 'Executing SonarQube...... Unstable'
-						updateGitlabCommitStatus name: "Jenkins build", state: 'failed'
 				}
 
             }
