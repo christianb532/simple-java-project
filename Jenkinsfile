@@ -1,28 +1,28 @@
 pipeline {
   agent any
   stages {
-	stage('Clone from SCM') {
-            steps {             
-                echo 'connecting to SCM...'
-				updateGitlabCommitStatus name: 'Jenkins build', state: 'running'	  
-				checkout scm
-				post{
-					success {
-							echo 'clone from SCM... Success'
-							updateGitlabCommitStatus name: "Jenkins build", state: 'success'
-					}
-					failure {
-							echo 'clone from SCM... Failure'
-							updateGitlabCommitStatus name: "Jenkins build", state: 'failed'
-					}				
-					aborted {
-							echo 'clone from SCM... Aborted'
-							updateGitlabCommitStatus name: "Jenkins build", state: 'canceled'
-					}
-
-				}
-            }
-    }
+	//stage('Clone from SCM') {
+    //        steps {             
+    //            echo 'connecting to SCM...'
+	//			updateGitlabCommitStatus name: 'Jenkins build', state: 'running'	  
+	//			checkout scm
+	//			post{
+	//				success {
+	//						echo 'clone from SCM... Success'
+	//						updateGitlabCommitStatus name: "Jenkins build", state: 'success'
+	//				}
+	//				failure {
+	//						echo 'clone from SCM... Failure'
+	//						updateGitlabCommitStatus name: "Jenkins build", state: 'failed'
+	//				}				
+	//				aborted {
+	//						echo 'clone from SCM... Aborted'
+	//						updateGitlabCommitStatus name: "Jenkins build", state: 'canceled'
+	//				}
+	//
+	//			}
+    //        }
+    //}
     stage('Cleaning workspace') {
       steps {
 			echo 'cleaning workspace...'
