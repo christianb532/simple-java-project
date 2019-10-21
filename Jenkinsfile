@@ -23,6 +23,7 @@ pipeline {
       steps {
 			echo 'Executing SonarQube...'
 			withSonarQubeEnv('sonar'){
+				sh 'env'
 				sh 'mvn sonar:sonar'
 			}			
       }
