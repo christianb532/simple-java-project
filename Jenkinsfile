@@ -24,7 +24,7 @@ pipeline {
 			echo 'Executing SonarQube...'
 			withSonarQubeEnv('sonar'){
 				sh 'env'
-				sh 'mvn sonar:sonar'
+				sh 'mvn sonar:sonar -Dsonar.login=${SONAR_AUTH_TOKEN}'
 			}			
       }
     }
