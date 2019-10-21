@@ -5,7 +5,7 @@ pipeline {
             steps {             
                 echo 'connecting to SCM...'
 				updateGitlabCommitStatus name: 'Jenkins build', state: 'running'	  
-				checkout scm'
+				checkout scm
 				post{
 					success {
 							echo 'clone from SCM... Success'
