@@ -1,6 +1,12 @@
 pipeline {
   agent any
   stages {
+	stage('SCM') {
+      steps {
+			echo 'checkout from SCM...'	  
+			checkout scm
+      }
+    }
     stage('Cleaning workspace') {
       steps {
 			echo 'cleaning workspace...'	  
@@ -13,19 +19,24 @@ pipeline {
 			sh 'mvn compile'
             }
     }
-	stage('Test') {
+	stage('Unit Test') {
       steps {
 			echo 'Executing Unit tests...'			
 			sh 'mvn test'			
       }
     }	
-	stage('Sonar Qube') {
+	stage('Code Analysis') {
       steps {
 			echo 'Executing SonarQube...'
 			withSonarQubeEnv('sonar'){
 				sh 'env'
 				sh 'mvn sonar:sonar -Dsonar.login=${SONAR_AUTH_TOKEN}'
 			}			
+      }
+    }
+	stage('Code Security') {
+      steps {
+			echo 'Executing Fortify...'			
       }
     }
   }
